@@ -1,67 +1,77 @@
-﻿Console.WriteLine("enter birth date in format DD.MM");
-
+﻿Console.WriteLine("enter date in format DD.MM.YYYY ");
 string[] dates = Console.ReadLine().Split('.');
-
-int day = int.Parse(dates[0]);
-int month = int.Parse(dates[1]);
-
-if (day > 20 && month == 3 || day < 19 && month == 4)
+int[] dateNums = new int[3];
+dateNums[0] = int.Parse(dates[1]);
+dateNums[1] = int.Parse(dates[0]);
+dateNums[2] = int.Parse(dates[2]);
+int l = 1;
+int year = 1971;
+if (year < dateNums[2])
 {
-    Console.WriteLine("you are oven");
+    for (int i = year; i < dateNums[2]; i++)
+    {
+        l += 11;
+        if (l > 30)
+        {
+            l -= 30;
+        }
+    }
+}
+else
+{
+    for (int i = year; i > dateNums[2]; i--)
+    {
+        l += 11;
+        if (l > 30)
+        {
+            l -= 30;
+        }
+    }
+}
+
+Console.WriteLine(l);
+int age = dateNums[0] + dateNums[1] + l;
+Console.WriteLine(age);
+if (age > 30)
+{
+    age = age - 30;
+    age += 2;
+}
+if (age > 0 && age < 7)
+{
+    Console.WriteLine("rising moon, less than half");
+}
+else if (age == 7)
+{
+    Console.WriteLine("rising moon, exactly half");
 
 }
-else if (month == 4 && day >= 20 || month == 5 && day < 21)
+else if (age > 7 && age < 14)
 {
-    Console.WriteLine("you are telec");
+    Console.WriteLine("rising moon, more than half");
 
 }
-else if (month == 5 && day >= 21 || month == 6 && day < 22)
+else if (age == 14)
 {
-    Console.WriteLine("you are bliznizi");
+    Console.WriteLine("full moon");
 
 }
-else if (month == 6 && day >= 23 || month == 7 && day < 22)
+else if (age > 14 && age < 22)
 {
-    Console.WriteLine("you are rak");
+    Console.WriteLine("deacrising moon, more than half");
 
 }
-else if (month == 7 && day >= 22 || month == 8 && day < 23)
+else if (age == 22)
 {
-    Console.WriteLine("you are lev");
+    Console.WriteLine("deacrising moon, exactly half");
 
 }
-else if (month == 8 && day >= 23 || month == 9 && day < 22)
+else if (age > 22 && age < 29)
 {
-    Console.WriteLine("you are deva");
+    Console.WriteLine("deacrising moon, less than half");
 
 }
-else if (month == 9 && day >= 22 || month == 10 && day < 24)
+else if (age > 28)
 {
-    Console.WriteLine("you are vesy");
-
-}
-else if (month == 10 && day >= 24 || month == 11 && day < 23)
-{
-    Console.WriteLine("you are scorpion");
-
-}
-else if (month == 11 && day >= 22 || month == 12 && day < 22)
-{
-    Console.WriteLine("you are strelec");
-
-}
-else if (month == 12 && day >= 22 || month == 1 && day < 22)
-{
-    Console.WriteLine("you are kozerog");
-
-}
-else if (month == 1 && day >= 22 || month == 2 && day < 22)
-{
-    Console.WriteLine("you are vodoley");
-
-}
-else if (month == 2 && day >= 22 || month == 3 && day < 22)
-{
-    Console.WriteLine("you are ryba");
-
+    Console.WriteLine("no moon");
 }
